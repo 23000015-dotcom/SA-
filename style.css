@@ -1,0 +1,1161 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* 中国の宮殿を彷彿とさせる高貴な色調 */
+  --palace-red: #8e1c1c;        /* 朱赤・朱砂 */
+  --palace-red-dark: #5c1010;   /* 深紅・玄赤 */
+  --palace-gold: #e6b800;       /* 黄金色 */
+  --palace-gold-light: #fff099; /* 輝金 */
+  --palace-blue: #0b1a30;       /* 紺青（漆黒に近い闇夜） */
+  --palace-blue-light: #162a4a; /* 群青 */
+  --text-light: #f5f0eb;        /* 練色 */
+  --text-dark: #2a1b1b;         /* 焦茶 */
+  --font-serif: 'Noto Serif JP', 'Georgia', serif;
+  --font-english: 'Cinzel', serif;
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--palace-blue);
+  color: var(--text-light);
+  font-family: var(--font-serif);
+}
+
+body {
+  overflow-x: hidden;
+  background: radial-gradient(circle at center, var(--palace-blue-light) 0%, var(--palace-blue) 100%);
+  position: relative;
+}
+
+/* ==========================================================================
+   CHINESE PALACE LANTERNS (左右の伝統的な飾り提灯)
+   ========================================================================== */
+.palace-lantern {
+  position: fixed;
+  top: 120px;
+  width: 50px;
+  height: 180px;
+  z-index: 99;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.8;
+  transition: var(--transition-smooth);
+}
+
+.lantern-left { left: 30px; }
+.lantern-right { right: 30px; }
+
+@media (max-width: 1024px) {
+  .palace-lantern { display: none; } /* モバイル時は非表示 */
+}
+
+.lantern-body {
+  width: 44px;
+  height: 60px;
+  background: radial-gradient(circle, var(--palace-red) 50%, var(--palace-red-dark) 100%);
+  border-radius: 20px / 30px;
+  border: 2px solid var(--palace-gold);
+  position: relative;
+  box-shadow: 0 0 15px rgba(230, 184, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lanternSway 3s ease-in-out infinite alternate;
+}
+
+.lantern-glow {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, var(--palace-gold-light) 0%, transparent 70%);
+  opacity: 0.6;
+}
+
+.lantern-text {
+  font-family: var(--font-serif);
+  color: var(--palace-gold-light);
+  font-weight: 900;
+  font-size: 1.2rem;
+  z-index: 2;
+  text-shadow: 0 0 5px var(--palace-red-dark);
+}
+
+.lantern-body::before, .lantern-body::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 5px;
+  background: var(--palace-gold);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.lantern-body::before { top: -6px; border-radius: 3px 3px 0 0; }
+.lantern-body::after { bottom: -6px; border-radius: 0 0 3px 3px; }
+
+.lantern-tassel {
+  width: 4px;
+  height: 50px;
+  background: var(--palace-red);
+  margin-top: 5px;
+  position: relative;
+  box-shadow: 0 0 5px var(--palace-red);
+  animation: tasselSway 3s ease-in-out infinite alternate;
+}
+.lantern-tassel::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: -2px;
+  width: 8px;
+  height: 8px;
+  background: var(--palace-gold);
+  border-radius: 50%;
+}
+
+@keyframes lanternSway {
+  0% { transform: rotate(-3deg); }
+  100% { transform: rotate(3deg); }
+}
+@keyframes tasselSway {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
+.palace-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(11, 26, 48, 0.95);
+  border-bottom: 2px solid var(--palace-gold);
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: var(--transition-smooth);
+}
+
+.palace-header.scrolled {
+  background-color: var(--palace-blue);
+  padding: 5px 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.emblem {
+  font-size: 1.8rem;
+  color: var(--palace-gold);
+  text-shadow: 0 0 8px var(--palace-gold-light);
+  transform: rotate(45deg);
+  display: inline-block;
+  animation: spinSlow 15s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logo-text h1 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.logo-text p {
+  font-family: var(--font-english);
+  font-size: 0.75rem;
+  color: var(--palace-gold);
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  padding: 8px 12px;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-num {
+  font-size: 0.75rem;
+  color: var(--palace-gold);
+  border: 1px solid var(--palace-gold);
+  padding: 1px 4px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--palace-gold);
+  transition: var(--transition-smooth);
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+  color: var(--palace-gold);
+}
+
+.nav-links a:hover::after {
+  width: 80%;
+}
+
+/* ハンバーガーメニュー (SP用) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: var(--palace-gold);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--palace-blue);
+    border-left: 3px solid var(--palace-gold);
+    flex-direction: column;
+    padding: 100px 30px;
+    gap: 25px;
+    transition: var(--transition-smooth);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  }
+  .nav-links.active {
+    right: 0;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION (宮殿門のアニメーション＆ファーストビュー)
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 80px 20px;
+  overflow: hidden;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(11, 26, 48, 0.4) 0%, rgba(11, 26, 48, 0.9) 100%);
+  z-index: 1;
+}
+
+.palace-silhouette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.roof-svg {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+}
+
+/* 浮遊する中国伝統の雲模様 */
+.chinese-cloud {
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M10,40 Q25,25 40,40 T70,30 T90,40' fill='none' stroke='%23e6b800' stroke-width='2' stroke-linecap='round' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 180px;
+  height: 90px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cloud-1 {
+  top: 15%;
+  left: -50px;
+  animation: floatCloud 25s linear infinite;
+}
+
+.cloud-2 {
+  bottom: 10%;
+  right: -50px;
+  animation: floatCloudInverse 30s linear infinite;
+}
+
+@keyframes floatCloud {
+  0% { transform: translateX(-100%) translateY(0px); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateX(110vw) translateY(-20px); opacity: 0; }
+}
+
+@keyframes floatCloudInverse {
+  0% { transform: translateX(100%) translateY(0px); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translateX(-110vw) translateY(30px); opacity: 0; }
+}
+
+/* 門をイメージしたデコレーション */
+.palace-gate-decoration {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+.gate-pillar {
+  width: 6px;
+  height: 70px;
+  background: linear-gradient(to bottom, var(--palace-gold), var(--palace-red));
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(230, 184, 0, 0.5);
+}
+
+.gate-plaque {
+  background-color: var(--palace-red-dark);
+  border: 3px double var(--palace-gold);
+  padding: 10px 25px;
+  transform: skewX(-5deg);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+.gate-plaque::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; bottom: 3px;
+  border: 1px solid rgba(230, 184, 0, 0.4);
+}
+
+.gate-plaque h2 {
+  font-family: var(--font-english);
+  font-size: 2.2rem;
+  color: var(--palace-gold-light);
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-weight: 900;
+  color: var(--text-light);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 3px 3px 0px var(--palace-red-dark);
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.hero-sub {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--palace-gold);
+  letter-spacing: 6px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hero-desc {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+  color: #d1c8c1;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+/* スクロールダウンの誘い */
+.scroll-down {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--palace-gold-light);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.scroll-down i {
+  font-size: 1.2rem;
+  animation: bounceDown 1.5s infinite alternate;
+}
+
+@keyframes bounceDown {
+  from { transform: translateY(0); }
+  to { transform: translateY(8px); }
+}
+
+/* ==========================================================================
+   COMMON SECTION STYLES
+   ========================================================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+/* 伝統的デザインのセクションタイトル */
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chinese-border-top, .chinese-border-bottom {
+  display: block;
+  width: 220px;
+  height: 12px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* SVGによる中華格子風ライン */
+.chinese-border-top {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0,5 H40 L45,1 L50,9 L55,1 L60,5 H100' fill='none' stroke='%23e6b800' stroke-width='2'/%3E%3C/svg%3E");
+  margin-bottom: 15px;
+}
+
+.chinese-border-bottom {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0,5 H40 L45,9 L50,1 L55,9 L60,5 H100' fill='none' stroke='%23e6b800' stroke-width='2'/%3E%3C/svg%3E");
+  margin-top: 15px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  margin: 5px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.section-subtitle {
+  font-family: var(--font-english);
+  font-size: 0.85rem;
+  color: var(--palace-gold);
+  letter-spacing: 4px;
+}
+
+.section-description {
+  text-align: center;
+  max-width: 700px;
+  margin: -30px auto 50px auto;
+  line-height: 1.8;
+  color: #c9bfb5;
+}
+
+/* ==========================================================================
+   CONCEPT SECTION
+   ========================================================================== */
+.concept-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, rgba(11, 26, 48, 0) 0%, rgba(22, 42, 74, 0.5) 100%);
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .concept-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.concept-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--palace-gold-light);
+  margin-bottom: 20px;
+  line-height: 1.4;
+  border-left: 4px solid var(--palace-red);
+  padding-left: 15px;
+}
+
+.concept-text p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #d8ced6;
+  margin-bottom: 20px;
+}
+
+.concept-features {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.c-feat-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: rgba(142, 28, 28, 0.15);
+  border: 1px solid rgba(230, 184, 0, 0.2);
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+}
+
+.c-feat-item:hover {
+  border-color: var(--palace-gold);
+  background-color: rgba(142, 28, 28, 0.3);
+  transform: translateX(10px);
+}
+
+.c-feat-item i {
+  font-size: 1.4rem;
+  color: var(--palace-gold);
+}
+
+/* 宮殿の「飾り窓」フレーム */
+.concept-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.palace-frame {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
+  background: var(--palace-red-dark);
+  border: 8px solid var(--palace-gold);
+  border-radius: 50% 50% 0 0; /* 伝統的なドーム（アーチ）窓 */
+  padding: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+.palace-frame::after {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px; right: -12px; bottom: -12px;
+  border: 2px solid var(--palace-red);
+  border-radius: 50% 50% 0 0;
+  pointer-events: none;
+}
+
+.frame-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 0 0;
+  background-color: var(--palace-blue);
+  border: 2px solid var(--palace-gold);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chinese-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 幾何学的な宮殿格子窓 */
+  background-image: 
+    linear-gradient(rgba(230, 184, 0, 0.08) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(230, 184, 0, 0.08) 2px, transparent 2px);
+  background-size: 25px 25px;
+  pointer-events: none;
+}
+
+.visual-content {
+  text-align: center;
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.palace-frame:hover .visual-content {
+  transform: scale(1.05);
+}
+
+.main-science-icon {
+  font-size: 4rem;
+  color: var(--palace-gold);
+  text-shadow: 0 0 20px rgba(230, 184, 0, 0.5);
+  margin-bottom: 15px;
+}
+
+.visual-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.visual-content p {
+  font-size: 0.8rem;
+  color: var(--palace-gold-light);
+}
+
+/* ==========================================================================
+   FEATURES SECTION (三柱のカード)
+   ========================================================================== */
+.features-section {
+  padding: 100px 0;
+  background-color: rgba(11, 26, 48, 0.8);
+  position: relative;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background-color: var(--palace-blue);
+  border: 2px solid var(--palace-red);
+  padding: 40px 30px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* カード上部の「屋根」を想起させる極細の金装飾 */
+.card-roof {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--palace-red) 0%, var(--palace-gold) 50%, var(--palace-red) 100%);
+  transition: var(--transition-smooth);
+}
+
+.card-bg-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(142, 28, 28, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--palace-gold);
+  box-shadow: 0 15px 35px rgba(230, 184, 0, 0.15);
+}
+
+.feature-card:hover .card-roof {
+  height: 8px;
+  background: var(--palace-gold);
+}
+
+.feature-card:hover .card-bg-glow {
+  opacity: 1;
+}
+
+.card-icon-wrap {
+  width: 80px;
+  height: 80px;
+  background-color: var(--palace-red-dark);
+  border: 2px solid var(--palace-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.feature-card:hover .card-icon-wrap {
+  transform: rotateY(360deg);
+  background-color: var(--palace-red);
+  box-shadow: 0 0 20px rgba(230, 184, 0, 0.3);
+}
+
+.card-icon-wrap i {
+  font-size: 2.2rem;
+  color: var(--palace-gold);
+}
+
+.feature-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--text-light);
+  margin-bottom: 15px;
+  z-index: 2;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #c9bfb5;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   LABS SECTION (八大科学領域)
+   ========================================================================== */
+.labs-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, rgba(22, 42, 74, 0.5) 0%, rgba(11, 26, 48, 1) 100%);
+}
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.lab-item {
+  background-color: rgba(142, 28, 28, 0.08);
+  border: 1px solid rgba(230, 184, 0, 0.15);
+  border-radius: 4px;
+  padding: 30px 20px;
+  position: relative;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.lab-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.lab-icon {
+  font-size: 2.5rem;
+  color: var(--palace-gold);
+  margin-bottom: 15px;
+  transition: var(--transition-smooth);
+}
+
+.lab-item:hover .lab-icon {
+  transform: scale(1.2);
+  color: var(--palace-gold-light);
+}
+
+.lab-item h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.lab-item p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #bfb5ad;
+}
+
+/* 宮殿の透かし格子模様（ホバーで浮かび上がる） */
+.palace-lattice {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z M30 10 L50 30 L30 50 L10 30 Z' fill='none' stroke='%23e6b800' stroke-width='0.5' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+  transition: var(--transition-smooth);
+}
+
+.lab-item:hover {
+  background-color: rgba(142, 28, 28, 0.25);
+  border-color: var(--palace-gold);
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.lab-item:hover .palace-lattice {
+  opacity: 0.2;
+}
+
+/* ==========================================================================
+   ACTIVITIES TIMELINE
+   ========================================================================== */
+.activities-section {
+  padding: 100px 0;
+  background-color: rgba(11, 26, 48, 0.95);
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 中風の柱を意識した金色のライン */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--palace-red), var(--palace-gold), var(--palace-red));
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px var(--palace-gold);
+}
+
+@media (max-width: 768px) {
+  .timeline-line { left: 30px; }
+}
+
+.timeline-item {
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 20px;
+  }
+}
+
+.timeline-item.left { left: 0; text-align: right; }
+.timeline-item.right { left: 50%; text-align: left; }
+
+@media (max-width: 768px) {
+  .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
+}
+
+/* スタイルが左右で対照になる配置のバッジ */
+.timeline-item::after {
+  content: '★';
+  font-size: 0.8rem;
+  color: var(--palace-gold);
+  text-shadow: 0 0 5px var(--palace-gold-light);
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--palace-red-dark);
+  border: 2px solid var(--palace-gold);
+  border-radius: 50%;
+  top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.timeline-item.left::after { right: -12px; }
+.timeline-item.right::after { left: -12px; }
+
+@media (max-width: 768px) {
+  .timeline-item.left::after, .timeline-item.right::after { left: 18px; }
+}
+
+.timeline-content {
+  background-color: rgba(22, 42, 74, 0.4);
+  border: 1px solid rgba(230, 184, 0, 0.15);
+  padding: 25px 30px;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+}
+
+.timeline-content:hover {
+  background-color: rgba(22, 42, 74, 0.8);
+  border-color: var(--palace-gold);
+  transform: translateY(-5px);
+}
+
+.timeline-tag {
+  display: inline-block;
+  font-family: var(--font-english);
+  font-size: 0.75rem;
+  color: var(--palace-gold);
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--palace-gold);
+  padding-bottom: 3px;
+  margin-bottom: 12px;
+}
+
+.timeline-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--palace-gold-light);
+  margin-bottom: 12px;
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #bfb5ad;
+}
+
+/* ==========================================================================
+   JOIN / ACTION CALL SECTION
+   ========================================================================== */
+.join-section {
+  padding: 120px 0;
+  position: relative;
+  background: linear-gradient(180deg, var(--palace-blue) 0%, var(--palace-red-dark) 100%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.join-section .cloud-3 {
+  top: 20%;
+  left: 10%;
+  transform: scale(1.5);
+  opacity: 0.15;
+  animation: floatCloud 40s linear infinite;
+}
+
+.join-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.gate-icon {
+  font-size: 4rem;
+  color: var(--palace-gold);
+  text-shadow: 0 0 20px var(--palace-gold);
+  margin-bottom: 20px;
+}
+
+.join-content h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.join-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #eae1d8;
+  margin-bottom: 40px;
+}
+
+/* 中華風高貴デザインボタン */
+.palace-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  background-color: var(--palace-red);
+  border: 2px solid var(--palace-gold);
+  color: var(--palace-gold-light);
+  padding: 15px 35px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 2px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.palace-btn::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; bottom: 3px;
+  border: 1px solid rgba(230, 184, 0, 0.4);
+}
+
+.palace-btn:hover {
+  background-color: var(--palace-red-dark);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(230, 184, 0, 0.3);
+}
+
+.palace-btn i {
+  font-size: 1.2rem;
+  transition: var(--transition-smooth);
+}
+
+.palace-btn:hover i {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.palace-footer {
+  background-color: #050b14;
+  border-top: 3px solid var(--palace-gold);
+  padding: 60px 0 30px 0;
+  color: #bfb5ad;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.footer-info h3 {
+  font-family: var(--font-serif);
+  color: var(--text-light);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.footer-info p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.footer-links h4 {
+  font-family: var(--font-serif);
+  color: var(--palace-gold);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #bfb5ad;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.footer-links ul li a:hover {
+  color: var(--palace-gold);
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(230, 184, 0, 0.1);
+  padding-top: 25px;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   INTERSECTION OBSERVER REVEAL (スクロール時の滑らかなアニメーション)
+   ========================================================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>昭和学院SAコース紹介</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>昭和学院中学校・高等学校 - サイエンスアカデミー（SA）コース</title>
+  <!-- Google Fonts: 伝統的な雰囲気を醸し出す明朝体と洗練されたフォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Elegant Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSSファイルへのリンク（CodepenではCSS設定に貼り付けるか、外部CSSとして処理されます） -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 装飾用の宮殿の提灯（ランタン） -->
+  <div class="palace-lantern lantern-left">
+    <div class="lantern-body">
+      <div class="lantern-glow"></div>
+      <span class="lantern-text">科</span>
+    </div>
+    <div class="lantern-tassel"></div>
+  </div>
+  <div class="palace-lantern lantern-right">
+    <div class="lantern-body">
+      <div class="lantern-glow"></div>
+      <span class="lantern-text">学</span>
+    </div>
+    <div class="lantern-tassel"></div>
+  </div>
+
+  <!-- ナビゲーションバー -->
+  <header class="palace-header">
+    <div class="header-container">
+      <div class="logo">
+        <span class="emblem">卍</span>
+        <div class="logo-text">
+          <h1>昭和学院</h1>
+          <p>SCIENCE ACADEMY</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#concept"><span class="nav-num">壱</span> 理念</a>
+        <a href="#features"><span class="nav-num">弐</span> 特徴</a>
+        <a href="#labs"><span class="nav-num">参</span> 八大領域</a>
+        <a href="#activities"><span class="nav-num">四</span> 探究活動</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション：宮殿の正門を潜るような壮大なファーストビュー -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-overlay"></div>
+    
+    <!-- 宮殿のシルエット装飾 -->
+    <div class="palace-silhouette">
+      <!-- SVGを用いた中国風の屋根・雲の装飾 -->
+      <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="roof-svg">
+        <path d="M0,400 L0,150 Q150,50 300,100 T600,80 T900,100 Q1050,50 1200,150 L1200,400 Z" fill="#7a1a1a"></path>
+        <path d="M0,130 Q150,30 300,80 T600,60 T900,80 Q1050,30 1200,130" stroke="#ffd700" stroke-width="4" fill="none"></path>
+      </svg>
+    </div>
+
+    <!-- 雲のフローティングアニメーション -->
+    <div class="chinese-cloud cloud-1"></div>
+    <div class="chinese-cloud cloud-2"></div>
+
+    <div class="hero-content">
+      <div class="palace-gate-decoration">
+        <span class="gate-pillar left"></span>
+        <div class="gate-plaque">
+          <h2>SA</h2>
+        </div>
+        <span class="gate-pillar right"></span>
+      </div>
+      <h3 class="hero-sub">好奇心で世界を切り拓く</h3>
+      <h2 class="hero-title">サイエンスアカデミー</h2>
+      <p class="hero-desc">悠久の知が眠る宮殿のように、終わりのない科学のロマンを追い求める。文理を問わない「科学的思考の型」を身につけ、世界を解き明かす一人の研究者へ。</p>
+      <div class="scroll-down">
+        <span>深淵なる探究へ</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- 理念セクション -->
+  <section class="concept-section" id="concept">
+    <div class="container">
+      <div class="section-title-wrap scroll-reveal">
+        <span class="chinese-border-top"></span>
+        <h2 class="section-title">創出される、科学的思考の「型」</h2>
+        <p class="section-subtitle">CONCEPT OF SCIENCE ACADEMY</p>
+        <span class="chinese-border-bottom"></span>
+      </div>
+
+      <div class="concept-grid">
+        <div class="concept-text scroll-reveal">
+          <h3>本物の研究活動を通じ、未知に立ち向かう</h3>
+          <p>
+            昭和学院のSAコース（サイエンスアカデミー）は、単なる勉強の場ではありません。そこは、世界でまだ誰も解き明かしていない謎に、一人の科学者として立ち向かう「知の宮殿」です。
+          </p>
+          <p>
+            仮説を立て、検証を繰り返すプロセス。この「科学的思考の型」は、将来いかなる分野へ進もうとも、揺るぎない知の基盤となります。大学や企業の第一線で活躍する研究所、そして最先端の設備があなたを待っています。
+          </p>
+          <div class="concept-features">
+            <div class="c-feat-item">
+              <i class="fa-solid fa-microscope"></i>
+              <span>大学レベルの研究設備</span>
+            </div>
+            <div class="c-feat-item">
+              <i class="fa-solid fa-compass"></i>
+              <span>8名の専門研究員（教員）</span>
+            </div>
+            <div class="c-feat-item">
+              <i class="fa-solid fa-code"></i>
+              <span>Pythonによるプログラミング思考</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-visual scroll-reveal">
+          <div class="palace-frame">
+            <div class="frame-inner">
+              <div class="chinese-grid-overlay"></div>
+              <!-- 宮殿を想起させるサイエンスのアート -->
+              <div class="visual-content">
+                <i class="fa-solid fa-flask-vial main-science-icon"></i>
+                <h4>科学のロマン</h4>
+                <p>世界を紐解く、悠久の鍵</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特徴セクション（宮殿の「三本柱」） -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-title-wrap scroll-reveal">
+        <span class="chinese-border-top"></span>
+        <h2 class="section-title">SAコース 3つの神髄</h2>
+        <p class="section-subtitle">THREE PILLARS OF SA COURSE</p>
+        <span class="chinese-border-bottom"></span>
+      </div>
+
+      <div class="features-grid">
+        <!-- 柱 1 -->
+        <div class="feature-card scroll-reveal">
+          <div class="card-bg-glow"></div>
+          <div class="card-roof"></div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3>科学的思考の「型」の習得</h3>
+          <p>中1の1学期から大学・研究所さながらの指導を受け、誰も知らないテーマの発見から論文執筆、ディスカッションまで、本格的なプロセスを体得します。</p>
+        </div>
+
+        <!-- 柱 2 -->
+        <div class="feature-card scroll-reveal">
+          <div class="card-bg-glow"></div>
+          <div class="card-roof"></div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-cubes"></i>
+          </div>
+          <h3>教科横断的な探究アプローチ</h3>
+          <p>理科のみに留まらず、国語や英語、歴史といった他教科でも「科学」をテーマに据え、思考の垣根を取り払った多角的な学びを推進します。</p>
+        </div>
+
+        <!-- 柱 3 -->
+        <div class="feature-card scroll-reveal">
+          <div class="card-bg-glow"></div>
+          <div class="card-roof"></div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-terminal"></i>
+          </div>
+          <h3>Pythonによる実践学習</h3>
+          <p>朝活動の時間を活用し、プログラミング言語「Python」の実践学習を導入。動画を使った個別レベルアップで、論理的解決力を体得します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八大領域（宮殿の八つの間） -->
+  <section class="labs-section" id="labs">
+    <div class="container">
+      <div class="section-title-wrap scroll-reveal">
+        <span class="chinese-border-top"></span>
+        <h2 class="section-title">宮殿にそびえる「八大科学領域」</h2>
+        <p class="section-subtitle">THE EIGHT SACRED RESEARCH FIELDS</p>
+        <span class="chinese-border-bottom"></span>
+      </div>
+      <p class="section-description scroll-reveal">
+        生徒全員が中1段階で、専門の博士・修士号を持つ8名の教員が主導するすべての学問領域を体験。興味を惹きつけ、一生没頭できる研究テーマをここで見つけ出します。
+      </p>
+
+      <div class="labs-grid">
+        <!-- 領域 1 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-dna"></i></div>
+            <h3>植物遺伝学</h3>
+            <p>植物が秘める無限の可能性を、遺伝子レベルの解析から解き明かします。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 2 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-wind"></i></div>
+            <h3>風力発電工学</h3>
+            <p>流体力学に基づき、未来のクリーンエネルギーを創出する翼を設計します。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 3 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-egg"></i></div>
+            <h3>発生学</h3>
+            <p>ひとつの細胞が複雑な生命体へと変化していく、神秘のメカニズムを追求。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 4 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-tree"></i></div>
+            <h3>生命環境学</h3>
+            <p>身の回りの生態系を徹底調査し、人間と自然の調和ある未来を模索します。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 5 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-dog"></i></div>
+            <h3>動物行動学</h3>
+            <p>動物たちが交わす見えざる対話、社会性、進化がもたらした行動に迫ります。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 6 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-wave-square"></i></div>
+            <h3>音響工学</h3>
+            <p>波形を制御し、空間を彩る「音」の伝播と響きを科学的に解剖します。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 7 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-mortar-pestle"></i></div>
+            <h3>食品化学</h3>
+            <p>おいしさの正体を分子構造から捉え、新たな栄養と味覚のイノベーションを起こす。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+        <!-- 領域 8 -->
+        <div class="lab-item scroll-reveal">
+          <div class="lab-inner">
+            <div class="lab-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+            <h3>理論物理学</h3>
+            <p>既存の理論を使ってさまざまな現象を予測す結晶の幾何学的な構造変化がもたらす未知の物性を探究。</p>
+            <div class="palace-lattice"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 探究活動タイムライン・見学実績 -->
+  <section class="activities-section" id="activities">
+    <div class="container">
+      <div class="section-title-wrap scroll-reveal">
+        <span class="chinese-border-top"></span>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7D1WfTMSzGmHCToamstcQzW4uNCkI8D6Nhj9jUCtSBg&s=10">
+        <h2 class="section-title">宮殿の外に広がる世界</h2>
+        <p class="section-subtitle">EXTERNAL COLLABORATIONS</p>
+        <span class="chinese-border-bottom"></span>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-item left scroll-reveal">
+          <div class="timeline-content">
+            <div class="timeline-tag">RESEARCH VISIT</div>
+            <h3>一流の研究機関を往く</h3>
+            <p>千葉大学、東京学芸大学といった最高峰の知が集う大学や、清水建設の最先端技術研究所などを訪問。現役の研究者から哲学と技術を学びます。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right scroll-reveal">
+          <div class="timeline-content">
+            <div class="timeline-tag">GLOBAL MIND</div>
+            <h3>Googleなどの最先端企業連携</h3>
+            <p>世界的なテクノロジー企業への社会見学や最先端技術の体験を通じて、世界の誰も挑戦していない「真のグローバルスタンダード」を視野に入れます。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left scroll-reveal">
+          <div class="timeline-content">
+            <div class="timeline-tag">ACADEMIC RESULT</div>
+            <h3>自律的なゼミと論文執筆</h3>
+            <p>自ら定めた探究活動に徹底して没頭。単なる知識の蓄積にとどまらず、最終的に学術論文の執筆や学会を模したディスカッションでの発表に挑みます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ・呼びかけ -->
+  <section class="join-section">
+    <div class="chinese-cloud cloud-3"></div>
+    <div class="container">
+      <div class="join-content scroll-reveal">
+        <i class="fa-solid fa-door-open gate-icon"></i>
+      <hr>
+        <h2>知の殿堂の門を叩け</h2>
+        <p>理数系の得意・不得意は問いません。必要なのは、まだ見ぬ世界に夢中になれる情熱です。<br>昭和学院SAコースで、あなたの探究心を科学の力へ昇華させましょう。</p>
+        <div class="btn-container">
+          <a href="https://showa-gkn.ed.jp" target="_blank" class="palace-btn">
+            <span>昭和学院 公式サイトへ</span>
+            <i class="fa-solid fa-scroll"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="palace-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h3>昭和学院中学校・高等学校</h3>
+          <p>〒272-0823 千葉県市川市東菅野2-17-1</p>
+          <p>TEL: 047-323-4171</p>
+        </div>
+        <div class="footer-links">
+          <h4>コース紹介</h4>
+          <ul>
+            <li><a href="#concept">SAコース理念</a></li>
+            <li><a href="#features">3つの神髄</a></li>
+            <li><a href="#labs">八大研究領域</a></li>
+            <li><a href="#activities">外部連携実績</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Showa Gakuin Junior & Senior High School. All Rights Reserved. Designed in Imperial Palace Style.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
